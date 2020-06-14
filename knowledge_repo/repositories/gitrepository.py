@@ -143,13 +143,9 @@ class GitKnowledgeRepository(KnowledgeRepository):
             return
         logger.info("Fetching updates to the knowledge repository...")
         self.git_remote.fetch()
-        time.sleep(7)
         current_branch = self.git.active_branch
-        time.sleep(7)
         self.git.branches[branch].checkout()
-        time.sleep(7)
         self.git_remote.pull(branch)
-        time.sleep(7)
         current_branch.checkout()
 
     def set_active_draft(self, path):  # TODO: deprecate
