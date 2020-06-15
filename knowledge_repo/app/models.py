@@ -52,7 +52,7 @@ class IndexMetadata(db.Model):
             db_session.add(m)
 
     @classmethod
-    def get_last_update(cls, type, name):
+    def get_last_update(cls, type, name):z
         m = db_session.query(IndexMetadata).filter(IndexMetadata.type == type).filter(IndexMetadata.name == name).first()
         if m is not None:
             return m.updated_at

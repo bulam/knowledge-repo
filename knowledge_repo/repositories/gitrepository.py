@@ -14,9 +14,6 @@ from ..utils.encoding import encode
 logger = logging.getLogger(__name__)
 
 
-import time
-
-
 class GitKnowledgeRepository(KnowledgeRepository):
     _registry_keys = ['git']
 

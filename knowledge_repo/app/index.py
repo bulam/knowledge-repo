@@ -40,7 +40,7 @@ def set_up_indexing_timers(app):
             current_app.db.engine.dispose()
             while True:
                 with app.app_context():
-                    update_index(check_timeouts=False)
+                    update_index(check_timeouts=False, force=True)
                 time.sleep(app.config['INDEXING_INTERVAL'])
 
         app.index_watchdog = multiprocessing.Process(target=index_watchdog, args=(app,))
@@ -48,7 +48,7 @@ def set_up_indexing_timers(app):
     else:
         @app.before_request
         def update_index_if_required():
-            update_index()
+            update_index(force=True)
 
 
 def acquire_index_lock():
